@@ -1,42 +1,27 @@
-import {LocalDB} from 'https://cdn.skypack.dev/peadb'
-import shortid from 'https://cdn.skypack.dev/shortid'
-import confetti from 'https://cdn.skypack.dev/canvas-confetti'
-
-const db = new LocalDB('groceryplist-db')
-const groceries = db.getAll || []
+const groceries = []
 
 const groceryList = document.getElementById('groceryList')
 const newGroceryInput = document.getElementById('newGrocery')
 const addBtn = document.getElementById('addBtn')
 
-const createGrocryElement = groceryName => {
-    const groceryElement = document.createElement('li')
-    groceryElement.innerText = grocery.value
-    groceryElement.classList.add('groceryItem')
-    groceryElement.addEventListener('click', () => {
-        groceryElement.remove()
-        db.delete(grocery.key)
-        confetti({ particleCount: 200, spread: 1000, origin: { y: 1 }})
-    })
-    return groceryElement
+const createGroceryElement = grocery => {
+  const groceryElement = document.createElement('li')
+  groceryElement.innerText = grocery
+  groceryElement.classList.add('groceryItem')
+  return groceryElement
 }
 
 const addGrocery = newGrocery => {
-    groceryList.appendChild(createGroceryElement(newGrocery))
+  groceryList.appendChild(createGroceryElement(newGrocery))
 }
 
-
-
 addBtn.addEventListener('click', e => {
-    e.preventDefault()
-    const value = newGroceryInput.value
-    
-    if(value) {
-        const key = shortid.generate()
-        addGrocery({key, value})
-        db.set(key, value)
-        newGroceryInput.value = null
-    }
+  e.preventDefault()
+  const value = newGroceryInput.value
+  if (value) {
+    addGrocery(value)
+    newGroceryInput.value = null
+  }
 })
 
-groceries.map(grocery=>addGrocery(grocery))
+groceries.map(grocery => addGrocery(grocery))

@@ -15,7 +15,7 @@
 
 body {
 
-    background-color: var(--background);
+    background-color: var(--yellowish);
     color: var(--foreground);
     display: flex;
     flex-direction: column;
@@ -27,9 +27,9 @@ body {
 .title {
     margin: 0.5em;
     font-size: 4em;
-    font-weight: lighter;
+    font-weight: bold;
     letter-spacing: 0.05em;
-    color: var(--accent);
+    color: var(--comment);
 }
 
 .newGroceryForm {
@@ -38,24 +38,24 @@ body {
 #newGrocery {
     background-color: white;
     color: var(--comment);
-    padding: 0.05em;
-    width: 20em;
-    font-size: 1.5em;
+    padding: 0.1em;
+    width: 15em;
+    font-size: 2.0em;
     border-radius: 0.25em 0 0 0.25em;
 }
 
 #addBtn {
-    background-color: var(--greenish);
+    background-color: var(--redish);
     color: var(--background);
-    padding: 0.05em;
-    font-size: 1.5em;
+    padding: 0.1em;
+    font-size: 2.0em;
     font-weight: bold;
     cursor: pointer;
     border-radius: 0 0.25em 0.25em 0;
 }
 
 #addBtn:hover {
-    background-color: var(--purplish) ;
+    background-color: var(--greenish) ;
 }
 
 #groceryList {
@@ -80,7 +80,7 @@ body {
 
 }
 
-#groceryItem:hover {
+.groceryItem:hover {
     background-color: var(--purplish);
     font-weight: bold;
 }
